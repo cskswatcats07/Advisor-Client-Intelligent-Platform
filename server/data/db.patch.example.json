@@ -1,0 +1,59 @@
+{
+  "securityPolicies": [
+    {
+      "id": "policy_default",
+      "organizationId": "org_demo",
+      "keyVersion": "v1",
+      "strictTwoEyeActions": ["notification.rule.update", "analytics.config.update"],
+      "strictFourEyeActions": ["fdx.client.register", "security.policy.update"],
+      "piiFields": ["userId", "email", "phone", "address", "fullName", "dateOfBirth"],
+      "logRetentionDays": 90
+    }
+  ],
+  "analyticsConfigs": [
+    {
+      "id": "analytics_default",
+      "organizationId": "org_demo",
+      "metricDefinitions": [
+        {
+          "key": "client_count",
+          "label": "Total Clients",
+          "formula": "count(clients)",
+          "chartType": "kpi"
+        }
+      ],
+      "personalizedOfferRules": [
+        {
+          "id": "offer_low_tfsa",
+          "name": "TFSA optimization offering",
+          "expr": "registered.TFSA.currentBalance<50000",
+          "offerCode": "OFFER_TFSA_BOOST",
+          "priority": 8
+        }
+      ]
+    }
+  ],
+  "notificationTemplates": [
+    {
+      "id": "template_custom_alert",
+      "organizationId": "org_demo",
+      "name": "Custom Alert",
+      "channel": "email",
+      "subject": "Alert {{clientId}}",
+      "body": "Alert payload {{value}}",
+      "active": true
+    }
+  ],
+  "notificationRules": [
+    {
+      "id": "rule_custom_alert",
+      "organizationId": "org_demo",
+      "name": "Custom Alert Rule",
+      "triggerType": "alert",
+      "templateId": "template_custom_alert",
+      "conditionExpr": "value>10",
+      "enabled": true,
+      "throttleMinutes": 60
+    }
+  ]
+}

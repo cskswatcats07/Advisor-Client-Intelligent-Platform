@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+:root {
+  --color-canada-red: #c41e3a;
+  --color-canada-light: #f8f6f3;
+  --color-slate-muted: #64748b;
+  --font-display: "DM Sans", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-display);
+  background: linear-gradient(165deg, #f0f4f8 0%, #e2e8f0 50%, #f8fafc 100%);
+  color: #1e293b;
+}
