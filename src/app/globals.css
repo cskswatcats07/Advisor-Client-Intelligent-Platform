@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+:root {
+  --ivory: #f7f1e8;
+  --champagne: #ede4d6;
+  --cream: #fbf7f0;
+  --burgundy: #7a1f2b;
+  --sunflower: #e8a317;
+  --dusty-rose: #c4877a;
+  --sage: #a8b5a0;
+  --forest: #3d4a3a;
+  --bronze: #b08d57;
+  --ink: #2c241b;
+  --muted: #6b5e52;
+  --background: var(--ivory);
+  --foreground: var(--ink);
+  --surface: var(--cream);
+  --primary: var(--burgundy);
+  --accent: var(--sunflower);
+  --gold: var(--bronze);
+  --rose: var(--dusty-rose);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-gold: var(--gold);
+  --color-rose: var(--rose);
+  --color-champagne: var(--champagne);
+  --color-ivory: var(--ivory);
+  --color-muted: var(--muted);
+  --color-sage: var(--sage);
+  --color-forest: var(--forest);
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at top, rgba(232, 163, 23, 0.08), transparent 45%),
+    radial-gradient(ellipse at bottom right, rgba(196, 135, 122, 0.12), transparent 40%),
+    linear-gradient(180deg, #fbf7f0 0%, #f7f1e8 45%, #ede4d6 100%);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(122, 31, 43, 0.18);
+}
+
+.font-serif {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+}
+
+.font-sans {
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+.ornament-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold),
+    transparent
+  );
+}
+
+.floral-frame {
+  position: relative;
+}
+
+.floral-frame::before,
+.floral-frame::after {
+  content: "";
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  pointer-events: none;
+  opacity: 0.55;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(232, 163, 23, 0.55), transparent 45%),
+    radial-gradient(circle at 70% 40%, rgba(196, 135, 122, 0.5), transparent 42%),
+    radial-gradient(circle at 45% 75%, rgba(122, 31, 43, 0.35), transparent 40%);
+}
+
+.floral-frame::before {
+  top: -8px;
+  left: -8px;
+}
+
+.floral-frame::after {
+  right: -8px;
+  bottom: -8px;
+  transform: rotate(180deg);
+}
+
+.hero-scrim {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(44, 36, 27, 0.25) 0%,
+      rgba(44, 36, 27, 0.45) 45%,
+      rgba(44, 36, 27, 0.72) 100%
+    );
+}
+
+.section-pad {
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .section-pad {
+    padding-inline: 2rem;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(4px);
+  }
+}
+
+@keyframes glow-in {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.9s ease-out both;
+}
+
+.animate-fade-up-delay {
+  animation: fade-up 1s ease-out 0.2s both;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fade-up 1s ease-out 0.4s both;
+}
+
+.animate-glow-in {
+  animation: glow-in 1.2s ease-out both;
+}
+
+.animate-scroll-hint {
+  animation: soft-pulse 2.2s ease-in-out infinite;
+}
+
+.masonry {
+  columns: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .masonry {
+    columns: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry {
+    columns: 3;
+  }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+.admin-shell {
+  background: #f4efe7;
+  color: var(--ink);
+}
+
+.admin-card {
+  background: rgba(255, 252, 247, 0.92);
+  border: 1px solid rgba(176, 141, 87, 0.22);
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(44, 36, 27, 0.04);
+}
+
+.pdf-page {
+  color: #2c241b;
+  background: #fbf7f0;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
